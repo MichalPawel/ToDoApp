@@ -27,6 +27,19 @@ def tasks_to_file():
         file.close()
 
 
+def read_tasks_from_file():
+    try:
+        file = open('tasks.txt')
+        for line in file.readlines():
+            tasks.append(line.strip())
+    except:
+        print("File not loaded")
+    finally:
+        file.close()
+
+
+read_tasks_from_file()
+
 while user_choice != 5:
     if user_choice == 1:
         show_tasks()
