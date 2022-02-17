@@ -1,10 +1,17 @@
+import os
+
+
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 user_choice = -1
 tasks = []
 
 
 def show_tasks():
     task_index = 0
-    print()
+    cls()
     print("Current tasks: ")
     if len(tasks) < 1:
         print("No taks")
@@ -16,16 +23,17 @@ def show_tasks():
 def add_task():
     task = input("Type task name: ")
     tasks.append(task)
+    cls()
     print('Task added: ' + task)
 
 
 def delete_task():
     id_to_be_deleted_plus_1 = input("Type number of task to be deleted: ")
     try:
-        print()
+        cls()
         print("Deleted task: " + tasks.pop(int(id_to_be_deleted_plus_1) - 1))
     except:
-        print()
+        cls()
         print('Oops Something went wrong. Make sure you put a correct task number')
 
 
@@ -45,10 +53,10 @@ def tasks_to_file():
         file = open('tasks.txt', 'w+')
         for task in tasks:
             file.write(task + "\n")
-        print()
+        cls()
         print("Tasks saved successfully")
     except:
-        print()
+        cls()
         print("Error - tasks NOT saved")
     finally:
         file.close()
